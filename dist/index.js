@@ -50,20 +50,27 @@ const user1 = {
     },
 };
 console.log(user1.currentAge && user1.currentAge()); // Output: 2003
-//Not Optional
-// interface UserId {
-//   readonly id: number;
-//   name: string;
-//   age?: number;
-//   currentAge: () => number; // Method is not optional
-// }
-// const user1: UserId = {
-//   id: 1,
-//   name: "yaseen",
-//   age: 21,
-//   currentAge() {
-//     return this.age ? 2024 - this.age : 2024;
-//   },
-// };
-// // Call the method
-// console.log(user1.currentAge()); // Should work
+class Person {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
+        console.log("My id is", id, "and my name is ", name);
+    }
+    register() {
+        return `${this.name} is registered`;
+    }
+}
+const yaseen2 = new Person(12, "Yaseen");
+console.log(yaseen2.register());
+class Employee extends Person {
+    constructor(id, name, position) {
+        super(id, name);
+        this.position = position;
+    }
+}
+const emp = new Employee(12, "Yaseen", "Dev");
+//Generics
+function getArray(items) {
+    return new Array().concat(items);
+}
+const numArray = getArray([1, 2, 3, 4]);
